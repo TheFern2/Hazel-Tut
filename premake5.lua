@@ -1,23 +1,22 @@
 workspace "Hazel"
 	architecture "x64"
-	
+
 	configurations
 	{
 		"Debug",
 		"Release",
 		"Dist"
 	}
-	
-	
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-	
+
 project "Hazel"
 	location "Hazel"
 	kind "SharedLib"
 	language "C++"
-	
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("obj/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
@@ -27,6 +26,7 @@ project "Hazel"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -62,9 +62,9 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("obj/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{

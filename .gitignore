@@ -2,6 +2,7 @@
 **/bin/
 !vendor/bin/premake/
 obj/
+bin-int/
 
 # Hazel files
 *.log
